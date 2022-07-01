@@ -1,0 +1,103 @@
+body {
+  background-image: url("https://images.pexels.com/photos/2310713/pexels-photo-2310713.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.container {
+  border: 1px solid white;
+  padding: 15px auto;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.w-100 {
+  width: 100%;
+}
+.btn-success {
+  color: white;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  margin-left: 0.5rem !important;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  padding-left: 20px;
+  padding-top: 20px;
+  text-decoration: none;
+  font-family: Google Sans, arial, sans-serif;
+}
+.wrapper-input {
+  width: 200px;
+}
+
+.town {
+  text-decoration: none;
+  margin-right: 20px;
+  color: black;
+}
+
+.circle {
+  background: #456bd9;
+  border-radius: 50%;
+  color: #fff;
+  position: relative;
+  width: max-content;
+}
+
+.circle-content {
+  margin: 0.75em;
+  text-align: center;
+}
+
+.day {
+  color: black;
+}
+
+.temperature {
+  margin: 0;
+}
+.weather-condition {
+  margin: 0;
+}
+
+.wrapper-condition {
+  margin-top: 20px;
+}
+
+.weekly-container {
+  border: 1px solid white;
+
+  margin: 20px auto;
+
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.block {
+  display: block;
+}
+.units {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.units:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
