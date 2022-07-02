@@ -101,3 +101,18 @@ ul {
   color: #0056b3;
   text-decoration: underline;
 }
+.git-link {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+.git-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+.wrapper-link {
+  margin: 20px auto;
+  width: 80%;
+  max-width: 800px;
+  display: block;
+}
