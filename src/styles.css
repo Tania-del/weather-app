@@ -56,12 +56,13 @@ ul {
   border-radius: 50%;
   color: #fff;
   position: relative;
-  width: max-content;
+  width: 200px;
 }
 
 .circle-content {
   margin: 0.75em;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .day {

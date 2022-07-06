@@ -70,11 +70,13 @@ const tempEl = document.querySelector(".temp");
 const cityEl = document.querySelector("#city");
 const precipitationEl = document.querySelector("#precipitation");
 const windEl = document.querySelector("#wind");
+const descriptionEl = document.querySelector("#description");
 
 const updateData = (response) => {
   const { temp, humidity } = response.data.main;
   console.log(response);
   const { speed } = response.data.wind;
+  const { description } = response.data.weather[0];
   dayEl.textContent = getCurrentDay();
   timeEl.textContent = getCurrentTime();
 
@@ -83,6 +85,7 @@ const updateData = (response) => {
 
   precipitationEl.textContent = humidity;
   windEl.textContent = Math.round(speed);
+  descriptionEl.textContent = description;
 };
 
 const searchCity = (event) => {
