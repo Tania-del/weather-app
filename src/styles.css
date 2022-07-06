@@ -114,8 +114,10 @@ ul {
   text-decoration: underline;
 }
 .wrapper-link {
+  font-size: 13px;
   margin: 20px auto;
   width: 80%;
   max-width: 800px;
   display: block;
+  text-align: center;
 }
