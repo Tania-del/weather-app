@@ -71,21 +71,26 @@ const cityEl = document.querySelector("#city");
 const precipitationEl = document.querySelector("#precipitation");
 const windEl = document.querySelector("#wind");
 const descriptionEl = document.querySelector("#description");
+const iconEl = document.querySelector("#icon");
 
 const updateData = (response) => {
   const { temp, humidity } = response.data.main;
   console.log(response);
   const { speed } = response.data.wind;
   const { description } = response.data.weather[0];
+
   dayEl.textContent = getCurrentDay();
   timeEl.textContent = getCurrentTime();
 
   tempEl.textContent = Math.round(temp);
   cityEl.textContent = response.data.name;
-
   precipitationEl.textContent = humidity;
   windEl.textContent = Math.round(speed);
   descriptionEl.textContent = description;
+  iconEl.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 };
 
 const searchCity = (event) => {

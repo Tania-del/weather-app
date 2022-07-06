@@ -62,9 +62,11 @@ ul {
 .circle-content {
   margin: 0.75em;
   text-align: center;
-  text-transform: capitalize;
 }
 
+.block:first-letter {
+  text-transform: capitalize;
+}
 .day {
   color: black;
 }
