@@ -90,6 +90,10 @@ ul {
   border-radius: 10px;
   padding: 20px;
 }
+.weather-min {
+  margin-left: 15px;
+  color: gray;
+}
 
 .block {
   display: block;
@@ -119,5 +123,8 @@ ul {
   width: 80%;
   max-width: 800px;
   display: block;
+  text-align: center;
+}
+* {
   text-align: center;
 }
