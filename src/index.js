@@ -15,6 +15,9 @@ const fahrenheitEl = document.querySelector("#fahrenheit");
 const currentTownEl = document.querySelector("#town-list");
 const currentButtonEl = document.querySelector("#current-button");
 
+const units = "metric";
+const apiKey = "ff302840c34e328a290e351206228b12";
+
 const getCurrentDay = () => {
   const now = new Date();
   let days = [
@@ -29,6 +32,48 @@ const getCurrentDay = () => {
 
   const day = now.getDay();
   return `${days[day]}`;
+};
+const formatDay = (timestamp) => {
+  const date = new Date(timestamp * 1000);
+  const day = date.getDay();
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+};
+
+const getDailyWeather = ({ lat, lon }) => {
+  let apiUrlDaily = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  axios.get(`${apiUrlDaily}`).then(displayForecast);
+};
+const displayForecast = ({ data }) => {
+  let forecast = data.daily;
+  console.log(forecast);
+  const forecastEl = document.querySelector("#forecast");
+  let forecastHTML = '<div class="row row-cols-5 weekly-container">';
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML += `<div class="col"><strong>${formatDay(
+        forecastDay.dt
+      )}</strong> <br /><br />
+            <div id="icon">
+            <img
+            src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png"
+            alt=""
+            width="42"
+            />
+            </div><br /><span class="weather-max">${Math.round(
+              forecastDay.temp.max
+            )}°</span><span class="weather-min">${Math.round(
+        forecastDay.temp.min
+      )}°</span>
+        </div>`;
+    }
+  });
+
+  forecastHTML += "</div>";
+
+  forecastEl.innerHTML = forecastHTML;
 };
 
 const getCurrentTime = () => {
@@ -54,11 +99,10 @@ const updateData = (response) => {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getDailyWeather(response.data.coord);
 };
 
 const getWeatherByCity = (city) => {
-  const units = "metric";
-  const apiKey = "ff302840c34e328a290e351206228b12";
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=${units}`;
   axios.get(`${apiUrl}`).then(updateData);
 };
@@ -80,11 +124,10 @@ const getTownEl = (event) => {
 currentTownEl.addEventListener("click", getTownEl);
 
 const getWetherByCoords = ({ latitude, longitude }) => {
-  let units = "metric";
-  let apiKey = "ff302840c34e328a290e351206228b12";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(`${apiUrl}`).then(updateData);
 };
+
 const getCoords = ({ coords }) => {
   getWetherByCoords(coords);
 };
@@ -93,6 +136,7 @@ const getCurrentPosition = () => {
   navigator.geolocation.getCurrentPosition(getCoords);
 };
 
+getCurrentPosition();
 currentButtonEl.addEventListener("click", getCurrentPosition);
 
 const convertToFahrenheit = (celcium) => {
@@ -119,5 +163,4 @@ const onClickCelcium = () => {
     tempEl.textContent = convertToCelcium(fahrenheit);
   }
 };
-
 celciumEl.addEventListener("click", onClickCelcium);

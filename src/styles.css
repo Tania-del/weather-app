@@ -128,3 +128,6 @@ ul {
 * {
   text-align: center;
 }
+.col-3 {
+  width: auto;
+}
